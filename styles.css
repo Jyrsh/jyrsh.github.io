@@ -1,42 +1,106 @@
+@font-face {
+    font-family: 'LogoFont';
+    src: url('OPTIEngeEtienne.otf');
+}
+
 body {
     margin: 0;
-    font-family: serif;
+    font-family: 'Times New Roman', serif;
     background-color: white;
     color: black;
     text-align: center;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+
 }
 
-.container {
+.navbar {
+    position: fixed;
+    top: 10px;
+    right: 10px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    gap: 15px;
+    z-index: 1000;
+}
+
+#theme-toggle, #music-toggle {
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+#theme-toggle:hover, #music-toggle:hover {
+    transform: scale(1.1);
 }
 
 header {
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    background: url('background-image.png') no-repeat center center/cover;
-    display: flex;
+    position: absolute;
     align-items: center;
     justify-content: center;
+    display: flex;
+    width: 100%;
+    height: 80%;
+    background: url('background-image.png') no-repeat center center;
+    background-position-y: 37%;
+    background-size: 50%;
+    background-position: fixed;
+    
+    
 }
 
 h1 {
-    text{
-        stroke: black;
-    }
-    font-size: 10rem;
-    text-shadow: 5px;
-    
-    padding: 10px 20px;
-    border-radius: 10px;
-    text-decoration-line: underline;
-    text-decoration-thickness: 5px;
+    pointer-events: auto;
+    font-family: serif;
+    font-size: 6rem;
+    text-transform: uppercase;
+    text-decoration: underline 3px solid black;
 }
 
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.dark-mode h1 {
+    color: white;
+    text-decoration: underline 3px solid white;
+}
+
+.options {
+    position: fixed;
+    left: 10%;
+    top: 60%;
+    text-align: left;
+}
+
+.options ul {
+    list-style: none;
+    padding: 0;
+}
+
+.options li {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    padding: 10px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid gray;
+    transition: transform 0.3s;
+    
+    /* Cascading Lean Effect */
+    transform: translateX(calc(15% * var(--index) * 3));
+}
+
+footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: gray;
+}
+
+/* Fade-in Animation */
 .fade-in {
     opacity: 0;
     animation: fadeIn 1.5s ease-in forwards;
@@ -45,18 +109,4 @@ h1 {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-}
-
-section {
-    margin: 20px 0;
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
-
-}
-ul > li {
-    display: inline-block
-    
 }
