@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kathryn.Dev</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div id="theme-toggle">🌙</div>
+        <div id="music-toggle">N</div>
+    </nav>
+
+    <header class="fade-in">
+        <img src="background-image.png" alt="Background" class="header-bg">
+        <h1>K A T H R Y N . D E V</h1>
+    </header>
+
+    <section class="options">
+        <ul class="fade-in">
+            <li style="--index: 1"><a href="#game-dev">Project List</a></li>
+            <li style="--index: 2"><a href="#discord-bot">About Me</a></li>
+            <li style="--index: 3"><a href="#school-projects">Resume</a></li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 My Projects | <a href="https://github.com/">GitHub</a> | <a href="#">Discord</a></p>
+    </footer>
+
+    <audio id="background-music" loop autoplay>
+        <source src="HomePage.mp3" type="audio/mpeg">
+        Your browser does not support audio.
+    </audio>
+
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const musicButton = document.getElementById('music-toggle');
+        const music = document.getElementById('background-music');
+    
+       // Dark Mode Toggle
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+
+            // Save preference to local storage
+            if (document.body.classList.contains('dark-mode')) {
+                toggleButton.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                toggleButton.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Load theme preference
+        document.addEventListener("DOMContentLoaded", () => {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                toggleButton.textContent = '☀️';
+            }
+        });
+            
+        // Check if autoplay is allowed
+        document.addEventListener("DOMContentLoaded", () => {
+            music.play().then(() => {
+                isPlaying = true;
+                musicButton.textContent = '🔇';
+            }).catch(() => {
+                isPlaying = false;
+                musicButton.textContent = '🎵';
+            });
+        });
+    
+        // Music Toggle
+        let isPlaying = true;
+        musicButton.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicButton.textContent = '🎵';
+            } else {
+                music.play();
+                musicButton.textContent = '🔇';
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>
