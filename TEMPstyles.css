@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    font-family: 'Times New Roman', serif;
+    text-align: center;
+    background-image: linear-gradient(#f0f0f0, #e6e6e6);
+}
+
+
+
+footer {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    color: gray;
+    font-size: 0.9rem;
+    bottom: 10px;
+}

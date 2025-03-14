@@ -1,23 +1,29 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const projectList = [
-        { name: "KathrynBot", owner: "Jyrsh" },
-        { name: "ExampleRepo", owner: "ExampleUser" } // Add more projects here
+        { name: "Wind-up-Kathryn", owner: "Jyrsh" },
+        { name: "Catalyst-Saga", owner: "Jyrsh"},
+        { name: "AnotherProject", owner: "AnotherUser" }
     ];
 
     const projectsGrid = document.getElementById("projects-grid");
 
-    projectList.forEach(project => {
+    for (const project of projectList) {
         const imageUrl = `https://raw.githubusercontent.com/${project.owner}/${project.name}/main/banner.png`;
+        const repoUrl = `https://github.com/${project.owner}/${project.name}`;
 
+        // Create card
         const card = document.createElement("div");
         card.className = "project-card";
         card.innerHTML = `
-            <img src="${imageUrl}" alt="${project.name} Banner" onerror="this.onerror=null; this.src='fallback.jpg';">
+            <a href="${repoUrl}" target="_blank">
+                <img src="${imageUrl}" alt="${project.name} Banner" onerror="this.onerror=null; this.src='fallback.png';">
+            </a>
             <div class="project-info">
                 <h3>${project.name}</h3>
-                <p>Description of ${project.name}.</p>
+                <p>Loading description...</p>
             </div>
         `;
+
         projectsGrid.appendChild(card);
-    });
+    }
 });
